@@ -24,4 +24,10 @@ export class AppService {
     return this._http.get(this.url + 'departamentos.json')
                      .map((response: Response)=>response.json());
   } 
+  public getDepartment(nombreDepartamento: string): Observable<any> {
+    let  departamento  = this.getDepartaments()
+                             .map((departamento: Departamento[]) => departamento.find((departamento: Departamento) => departamento.nombre === nombreDepartamento));
+    let productos =  this.getProducts(nombreDepartamento);
+    return Observable.forkJoin(departamento,productos); 
+  }
 }
