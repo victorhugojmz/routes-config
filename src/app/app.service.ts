@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Producto } from './product';
+import { Producto } from '../app';
 import { Http, Response } from '@angular/http';
 import { Departamento } from './departamento'
 /* 
@@ -15,6 +15,7 @@ import { Departamento } from './departamento'
 export class AppService {
   /* Inyectamos la dependencia HTTP como private */ 
   private url = "https://productos-e9bd9.firebaseio.com/";
+  private jsonplaceholder;
   constructor(private _http: Http) {  }
   public getProducts(departamento: string): Observable<Producto[]> {
     return  this._http.get(this.url + departamento + '.json')

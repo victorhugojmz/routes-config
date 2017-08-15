@@ -10,3 +10,5 @@
     import { Producto , Departamento } from '../products';
     "../products" es el nombre de la carpeta
 */
+export * from './product';
+export * from './departamento';
