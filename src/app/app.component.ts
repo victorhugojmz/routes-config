@@ -13,12 +13,9 @@ export class AppComponent implements OnInit {
     /* 
       EXPLICAR LOS TIPOS DE  FUNCIONES QUE VAN EN EL CUERPO DE SUSCRIBE
     */
-    this._appService.getProducts("Men")
-                    .subscribe( 
-                        data => this.data = data,
-                        (error) => console.log(error),
-                        ( ) => console.log("Operation Completed")
-                      );
+    this._appService.postProductData();
   }
+
   /* EJEMPLO DE FORK JOIN USANDO DOS OBSERVADORES */
+  
 }
