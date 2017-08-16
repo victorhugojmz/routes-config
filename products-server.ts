@@ -16,20 +16,25 @@ app.route('/products')
         var filtered = products;
         res.status(200).json(filtered);
     })
-    .delete((req, res) => {
-        let product = req.body;
-        const index  = products.indexOf(product);
-        products.splice(index,1);
-        res.status(200).send;
-    })
     .post((req,res) =>{
         products.push(req.body);
         res.status(200).send();
     });
-app.route('/products/:id')
+app.route('/products/:productId') 
+    .delete((req, res) => {
+        let productId = req.params.productId;
+        console.log("deleting",productId);
+        const index  =  _.find(products, product => product.id === productId);
+        products.splice(index,1);
+        res.status(200).send;
+    })
     .put((req, res) => {
-        var product = req.body
-        product  =  _.extend(product, req.body);
+        let productId = req.params.productId;
+        console.log("putting",productId);
+        let producto  =  _.filter(products, product => product.id === productId);
+        producto.id  = req.params.productId;
+        producto.stock = req.body.stock;
+        console.log(producto.stock);
         res.status(200).send();
     });
 var server = app.listen(8080, function() {
