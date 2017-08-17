@@ -23,5 +23,9 @@ export class AppComponent implements OnInit {
       });
     */
     this._appService.putData(2);
+    this._appService.getUsers()
+          .subscribe(
+              
+    )
   }
 }

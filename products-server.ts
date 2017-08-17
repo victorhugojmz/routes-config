@@ -1,9 +1,9 @@
 declare const require;
+import { productData } from "./produc-data";
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var cors = require('cors');
 var express = require('express');
-import { productData } from "./produc-data";
 var app = express();
 app.use(cors());
 app.options('*', cors());
@@ -18,7 +18,7 @@ app.route('/products')
     })
     .post((req,res) =>{
         products.push(req.body);
-        res.status(200).send();
+         res.status(200).send();
     });
 app.route('/products/:productId') 
     .delete((req, res) => {

@@ -16,12 +16,7 @@ import { myHeaders } from './headers';
   private _url = "http://jsonplaceholder.typicode.com/users";
 
 	constructor(private _http: Http){
-	}
-
-	getUsers(){
-		return this._http.get(this._url)
-			.map(res => res.json());
-	}    
+	} 
   getUser(userId){
 		return this._http.get(this.getUserUrl(userId))
 			.map(res => res.json());
@@ -51,7 +46,7 @@ export class AppService {
   private productos= "http://localhost:8080/products/";
   /* USER ADMINISTRATION */
   /* CREATE NEW */ 
-  private posts_url = "https://jsonplaceholder.typicode.com/posts";
+  private users_url = "https://jsonplaceholder.typicode.com/users";
   private post_url = "https://productos-rest-api.firebaseio.com/.json"
   constructor(private _http: Http) {  }
   public getProducts(departamento: string): Observable<Producto[]> {
@@ -75,6 +70,10 @@ export class AppService {
                         (err) => console.log(err),
                         () => console.log("DELETED"));
   }
+  getUsers(){
+		return this._http.get(this.users_url)
+			.map(res => res.json());
+	}   
   public putData(id){
     let data = { stock: 10 };
     this._http.put(this.productos + id, JSON.stringify(data),myHeaders())
